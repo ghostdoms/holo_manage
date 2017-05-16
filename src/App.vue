@@ -205,7 +205,7 @@ body {
 
 @font-face {
     font-family: 'LE';
-    src: url("/static/font/DINPRO-REGULAR.OTF");
+    src: url("/admin/static/font/DINPRO-REGULAR.OTF");
 }
 
 .clearfix:after {
@@ -248,7 +248,7 @@ table img {
 .add {
     width: 100%;
     height: 100%;
-    background: url(/static/index_bg.png);
+    background: url(/admin/static/index_bg.png);
     background-size: cover;
     background-color: #0288d1;
     position: fixed;
