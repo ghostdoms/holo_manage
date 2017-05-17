@@ -1,7 +1,8 @@
 import axios from 'axios';
 import config from '../config/config';
 import { encode } from '../config/config';
-import {base} from '../router/index';
+import { base } from '../router/index';
+
 function goPath(path) {
     window.path.push({
         path: path
@@ -83,7 +84,12 @@ export function installApp(state, data) {
     }).then(function(response) {
         var response = response.data;
         if (response.code == 10200) {
-            checkApp(data.device_id, state);
+            // checkApp(data.device_id, state);
+            state.alertInfo = 'operation completed.';
+            setTimeout(function() {
+                state.alertType = '';
+                refrsh(state, 0);
+            }, 2000);
         } else {
             state.alertType = 'err';
             state.alertInfo = 'install failed,please check your device and try again.';
@@ -327,7 +333,7 @@ export function updateOfApp(state, data) {
             state.go = 'Go';
             setTimeout(function() {
                 state.alertType = '';
-                goPath(base()+'/application')
+                goPath(base() + '/application')
             }, 2000);
             state.initNo = 0;
         } else {
@@ -374,7 +380,7 @@ export function addApp(state, data) {
             state.go = 'Go';
             setTimeout(function() {
                 state.alertType = '';
-                goPath(base()+'/application');
+                goPath(base() + '/application');
             }, 2000);
             state.initNo = 0;
         } else {

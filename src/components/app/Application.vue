@@ -44,7 +44,7 @@ export default {
     name: 'app',
     created() {
         this.getDetail();
-        if (location.pathname == '/application') {
+        if (location.pathname == '/admin/application') {
             this.isNeed = true;
         } else {
             this.isNeed = false;
@@ -72,7 +72,7 @@ export default {
     },
     watch: {
         '$route' () {
-            if (location.pathname == '/application') {
+            if (location.pathname == '/admin/application') {
                 this.isNeed = true;
                 this.getDetail();
             } else {

@@ -188,10 +188,10 @@ export default {
 
         },
         uninstallApp(detail, id) {
-            this.$store.state.device.isMark = 2;
-            this.$store.state.app.initNo = 1;
-            var detail = JSON.parse(detail);
             var self = this;
+            self.$store.state.device.isMark = 2;
+            self.$store.state.app.initNo = 1;
+            var detail = JSON.parse(detail);
             var res = {
                 id: id,
                 PackageFullName: detail.PackageFullName

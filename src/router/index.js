@@ -25,23 +25,23 @@ const routes = [{
     path: base()+'/device',
     component: Device,
     children: [{
-        path: base()+'more/:id',
+        path: 'more/:id',
         component: MoreDevice
     }, {
-        path: base()+'add',
+        path:'add',
         component: Add
     }]
 }, {
     path: base()+'/application',
     component: Application,
     children: [{
-        path: base()+'add',
+        path: 'add',
         component: Addapp
     }, {
-        path: base()+'upload/:id',
+        path:'upload/:id',
         component: Uploadapp
     }, {
-        path: base()+'more/:id',
+        path: 'more/:id',
         component: MoreApp
     }]
 }, {

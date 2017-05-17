@@ -89,9 +89,6 @@ export default {
         detail() {
             return this.$store.state.app.detail;
         },
-        detailDevice() {
-            return this.$store.state.device.detail;
-        },
         deleteIdApp() {
             return this.$store.state.app.deleteIdApp;
         },
@@ -116,7 +113,7 @@ export default {
                     }
                 })
             });
-            if (location.pathname != "/device/add") {
+            if (location.pathname != "/admin/device/add") {
                 this.$store.state.device.pinType = 3;
             };
             this.exist();
@@ -134,15 +131,15 @@ export default {
             isUpload: false,
             leftNav: [{
                 'name': 'Device',
-                'path': '/device',
+                'path': '/admin/device',
                 'isActive': false,
             }, {
                 'name': 'Application',
-                'path': '/application',
+                'path': '/admin/application',
                 'isActive': false,
             }, {
                 'name': 'License',
-                'path': '/license',
+                'path': '/admin/license',
                 'isActive': false,
             }]
         }
@@ -158,24 +155,24 @@ export default {
             this.$store.dispatch('addLicense', formData);
         },
         deleteDevice() { //delete
-            if (location.pathname == '/device') {
+            if (location.pathname == '/admin/device') {
                 var id = this.deleteId;
                 var res = {
                     id: id
                 };
                 this.$store.dispatch('deleteDevice', res);
-            } else if (location.pathname == '/application') {
+            } else if (location.pathname == '/admin/application') {
                 var id = this.deleteIdApp;
                 var res = {
                     id: id
                 };
                 this.$store.dispatch('delApp', res);
-            } else if (location.pathname == '/license') {
+            } else if (location.pathname == '/admin/license') {
                 this.$store.dispatch('deleteLicense');
             } else if (location.pathname.indexOf('/application/more') > -1) {
                 this.$store.dispatch('uninstallApp', this.detail);
             } else if (location.pathname.indexOf('/device/more') > -1) {
-                this.$store.dispatch('uninstallApp', this.detailDevice);
+                this.$store.dispatch('uninstallApp', this.detail);
             }
             this.$store.state.device.isMark = -1;
         },
@@ -372,7 +369,7 @@ table img {
 .content .lefNav {
     width: 230px;
     height: 100%;
-    background: url(./assets/left_bg.png);
+    background: url(/admin/static/left_bg.png);
     background-size: cover;
     background-color: #3c3c3c;
     float: left;

@@ -159,6 +159,7 @@ export function exist(state) {
         if (response.status == 200) {
             var response = response.data;
             if (response.data == true) {
+                console.log(response.data)
                 state.isBase = false;
                 isValid(state);
             } else {

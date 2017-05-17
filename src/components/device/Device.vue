@@ -59,26 +59,30 @@
 </template>
 <script type="text/javascript">
 import Alert from '../alert';
-import {base} from '../../router/index';
+import {
+    base
+} from '../../router/index';
 export default {
     name: 'device',
     created() {
+       
+    },
+    mounted() {
         var self = this;
-        self.init();
         var timer = null;
-
+        console.log(self.isBase)
         if (self.isBase == false) {
-           // clearInterval(timer);
-            self.timer = setInterval(()=> {
-                if (location.pathname == '/device') {
+            // clearInterval(timer);
+            self.timer = setInterval(() => {
+                if (location.pathname == '/admin/device') {
                     self.getDeviceList();
                     self.isNeed = true;
                 };
             }, 15000);
         };
     },
-    beforeDestroy () {
-      clearInterval(this.timer)
+    beforeDestroy() {
+        clearInterval(this.timer)
     },
     computed: {
         isBase() { //引导页显示
@@ -128,6 +132,21 @@ export default {
         },
         isBase() {
             this.init();
+            var self = this;
+            var timer = null;
+            console.log(self.isBase);
+            self.$nextTick(function() {
+                if (self.isBase == false) {
+                    // clearInterval(timer);
+                    self.timer = setInterval(() => {
+                        if (location.pathname == '/admin/device') {
+                            self.getDeviceList();
+                            self.isNeed = true;
+                        };
+                    }, 15000);
+                };
+            })
+
         },
         '$route' () {
             this.init();
@@ -140,13 +159,13 @@ export default {
             isErr: false,
             deviceNo: '',
             max: false,
-            timer:null,
+            timer: null,
         }
     },
     methods: {
         init() {
             if (this.isBase == false) {
-                if (location.pathname == '/device') {
+                if (location.pathname == '/admin/device') {
                     this.getDeviceList();
                     this.getDeviceDefaultList();
                     this.licensenfo();
@@ -164,7 +183,7 @@ export default {
         },
         goMoreDevice(id) { //go more
             this.$router.push({
-                path: base()+'/device/more/' + id
+                path: base() + '/device/more/' + id
             });
             this.$store.state.device.deleteId = id;
         },
@@ -174,7 +193,7 @@ export default {
                 this.max = true;
             } else {
                 this.$router.push({
-                    path: base()+'/device/add'
+                    path: base() + '/device/add'
                 });
             };
         },

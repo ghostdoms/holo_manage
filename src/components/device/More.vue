@@ -195,7 +195,8 @@ export default {
                 id: self.id,
                 PackageFullName: detail.PackageFullName
             };
-            self.$store.state.device.detail = res;
+            console.log(res);
+            self.$store.state.app.detail = res;
         },
         config(index, e, detail) {
             this.isConfig = true;
